@@ -11,6 +11,7 @@ import {
   import Typography from '@material-ui/core/Typography';
   import IconButton from '@material-ui/core/IconButton';
   import MenuIcon from '@material-ui/icons/Menu';
+import CreatePost from './Create/CreatePost';
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -55,13 +56,13 @@ const Navbar = () => {
                 <div>           
                     <Switch>
                     <Route path="/about">
-                        {/* <About /> */}
+                       
                     </Route>
                     <Route path="/users">
                         {/* <Users /> */}
                     </Route>
                     <Route path="/">
-                        {/* <Home /> */}
+                    <CreatePost/>
                     </Route>
                     </Switch>
                 </div>
