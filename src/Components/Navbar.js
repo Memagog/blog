@@ -10,15 +10,21 @@ import {
   import Toolbar from '@material-ui/core/Toolbar';
   import Typography from '@material-ui/core/Typography';
   import IconButton from '@material-ui/core/IconButton';
-  import MenuIcon from '@material-ui/icons/Menu';
+  import GitHubIcon from '@material-ui/icons/GitHub';
 import CreatePost from './Create/CreatePost';
+import PostList from './List/PostList';
+import ImportContactsIcon from '@material-ui/icons/ImportContacts';
+import PostPage from './Post/PostPage';
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(0),
     },
+    menuButton1: {
+        marginRight: theme.spacing(0),
+      },
     title: {
       flexGrow: 1,
     },
@@ -35,35 +41,41 @@ const Navbar = () => {
                 <AppBar position="static">
                     <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
+                        <ImportContactsIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        News
+                    <Link to="/" className={classes.link}><Typography variant="h6" className={classes.title}>MyBlog</Typography></Link>
                     </Typography>         
+                    
                     <Typography variant="h6" className={classes.title}>
-                        <Link to="/" className={classes.link}><Typography variant="h6" className={classes.title}>Home</Typography></Link>
-                    </Typography>  
-                    <Typography variant="h6" className={classes.title}>
-                        <Link to="/about" className={classes.link}><Typography variant="h6" className={classes.title}>About</Typography></Link>
+                        <Link to="/list" className={classes.link}><Typography variant="h6" className={classes.title}>AllPosts</Typography></Link>
                     </Typography>
                     <Typography variant="h6" className={classes.title}>
                         <Link to="/create" className={classes.link}><Typography variant="h6" className={classes.title}>Create</Typography></Link>
-                    </Typography>                      
-                    
+                    </Typography> 
+
+                                
+                    <IconButton edge="start" className={classes.menuButton1} color="inherit" aria-label="menu">
+                        <GitHubIcon/>
+                    </IconButton>
+                    <Typography variant="h6">                       
+                        <a href="https://github.com/Memagog/blog" target='_blank' className={classes.link}><Typography variant="h6" className={classes.title}>Github</Typography></a>
+                    </Typography>
                     </Toolbar>
                 </AppBar>    
     
                 <div>           
                     <Switch>
-                    <Route path="/about">
-                       
+                    <Route path="/list">
+                     <PostList/>  
                     </Route>
-                    <Route path="/users">
-                        {/* <Users /> */}
+                    <Route path="/post">
+                     <PostPage/>
                     </Route>
                     <Route path="/">
                     <CreatePost/>
                     </Route>
+                    
                     </Switch>
                 </div>
             </Router>
