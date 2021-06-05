@@ -46,12 +46,14 @@ const CreatePost = () => {
     const classes = useStyles(); 
     const {state, dispatch} = useContext(Context)
     const { register, handleSubmit,setValue} = useForm({ defaultValues: {},shouldFocusError: true,});
+
     const addPost = (data, e ) => {        
         dispatch({type:'ADD_POST', payload: data});
         console.log(`object`, state, e )         
-        setValue("name","")  
+        setValue("title","")  
         setValue("description","")     
     }
+    
     return (
         <div>          
             <Container component="main" maxWidth="xs">
@@ -70,7 +72,7 @@ const CreatePost = () => {
                         label="Title"                       
                         fullWidth                    
                         autoFocus             
-                        {...register("name")}
+                        {...register("title")}
                     />
                      <TextField
                         id="outlined"

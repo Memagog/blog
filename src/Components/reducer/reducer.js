@@ -1,9 +1,9 @@
 export const initialState = {    
     posts:[
-    { id: 4,name: "Ivan", description: "tutututruururu"},
-    { id: 3,name: "Peter", description: "tutututruururu"},
-    { id: 2,name: "Coin", description: "tutututruururu"},
-    { id: 1,name: "Lambuga", description: "tutututruururu"},
+    { id: 4,title: "Post4", description: "description4"},
+    { id: 3,title: "Peter3", description: "description3"},
+    { id: 2,title: "Coin2", description: "description2"},
+    { id: 1,title: "Post1", description: "description1"},
     ],
     selectedPost: [],
 }
@@ -15,17 +15,19 @@ export default function reducer(state, action) {
                 posts: [                 
                   { 
                     id: state.posts.length + 1,
-                    name: action.payload.name, 
+                    title: action.payload.title, 
                     description: action.payload.description,                   
                   },
                   ...state.posts,                
                 ]
             }  
-        case "SELECTED_POST":            
-            state.selectedPost = state.posts.filter((item)=>
-                item.id == action.payload                              
-            ) 
-            console.log('selectedPost :>> ',  state.selectedPost);
+
+        case "SELECTED_POST":
+            return{                        
+                ...state,
+                selectedPost: state.posts.filter((item) => item.id == action.payload)            
+            }            
+           
            
         default:
             break;
